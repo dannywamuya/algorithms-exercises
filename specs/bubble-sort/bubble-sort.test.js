@@ -11,13 +11,33 @@
 */
 
 function bubbleSort(nums) {
-  // code goes here
+	// code goes here
+	for (let i = 0; i < nums.length - 1; i++) {
+		const temp = nums[i];
+
+		if (temp > nums[i + 1]) {
+			nums[i] = nums[i + 1];
+			nums[i + 1] = temp;
+		}
+		console.log('forward', nums);
+		for (let j = nums.length - 1; j > 0; j--) {
+			const last = nums[j];
+
+			if (last < nums[j - 1]) {
+				nums[j] = nums[j - 1];
+				nums[j - 1] = last;
+			}
+		}
+		console.log('backward', nums);
+	}
+
+	return nums;
 }
 
 // unit tests
 // do not modify the below code
-test.skip("bubble sort", function () {
-  const nums = [10, 5, 3, 8, 2, 6, 4, 7, 9, 1];
-  const sortedNums = bubbleSort(nums);
-  expect(sortedNums).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+test('bubble sort', function () {
+	const nums = [10, 5, 3, 8, 2, 6, 4, 7, 9, 1];
+	const sortedNums = bubbleSort(nums);
+	expect(sortedNums).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 });
